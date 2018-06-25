@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandLineArguments.cs" />
+    <Compile Include="Exceptions\UnrecognizedStartingPositionException.cs" />
     <Compile Include="Exceptions\UnrecognizedMovementInstructionException.cs" />
     <Compile Include="Grid\Dimension.cs" />
     <Compile Include="Grid\Frame.cs" />
