@@ -33,7 +33,7 @@ namespace Interview.Rover.Vehicle
 
         public IEnumerable<Movement> CreateMovementInstructions(string instructions)
         {
-            var instructionSet = new char[instructions.Length];
+            var instructionSet = instructions.ToCharArray();
             for (var i = 0; i < instructions.Length; i++)
             {
                 var instruction = instructionSet[i];
