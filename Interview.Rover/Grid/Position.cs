@@ -8,6 +8,8 @@
 
 #endregion
 
+using System;
+using Interview.Rover.Exceptions;
 using Interview.Rover.Logic;
 
 namespace Interview.Rover.Grid
@@ -18,12 +20,63 @@ namespace Interview.Rover.Grid
         ///     Construct this <see cref="Position" /> based on a specified <see cref="Frame" /> grid.
         /// </summary>
         /// <param name="grid">Position will initialize at the south-west (0,0) location on this <see cref="Frame" />.</param>
-        /// <param name="facing">A <see cref="Compass"/> object to specify where the rover is initially facing.</param>
+        /// <param name="facing">A <see cref="Compass" /> object to specify where the rover is initially facing.</param>
         public Position(Frame grid, Compass facing)
         {
             X = grid.X.Position;
             Y = grid.Y.Position;
-            //todo
+            Facing = new Orientation(facing);
+        }
+
+        /// <summary>
+        ///     Construct this <see cref="Position" /> based on a specific <see cref="Frame" /> grid at a specific starting
+        ///     position.
+        /// </summary>
+        /// <param name="grid">Position will initalize based on this <see cref="Frame" />.</param>
+        /// <param name="startingPosition">
+        ///     The starting position is expected in "X Y Z" format, with Z being a
+        ///     <see cref="Compass" /> direction.
+        /// </param>
+        public Position(Frame grid, string startingPosition)
+        {
+            try
+            {
+                var parsedX = int.TryParse(startingPosition.Substring(0, 1), out var x);
+                var parsedY = int.TryParse(startingPosition.Substring(2, 1), out var y);
+                var z = Convert.ToChar(startingPosition.Substring(4, 1));
+
+                if (parsedX && parsedY)
+                {
+                    grid.X.Position = x;
+                    grid.Y.Position = y;
+                    Facing = new Orientation((Compass) z);
+                    if ((Compass) z == Compass.North || (Compass) z == Compass.South)
+                        CurrentAxis = grid.Y;
+                    else
+                        CurrentAxis = grid.X;
+                }
+                else
+                {
+                    if (parsedX)
+                        throw new UnrecognizedStartingPositionException();
+                }
+            }
+            catch (ArgumentNullException nullEx)
+            {
+                throw new UnrecognizedStartingPositionException(
+                    "The starting position for this rover contains null characters.", nullEx);
+            }
+            catch (InvalidCastException castEx)
+            {
+                throw new UnrecognizedStartingPositionException(
+                    "The starting position for this rover contains symbols which could not be case from the \"X Y Z\" format.",
+                    castEx);
+            }
+            catch (OverflowException flowEx)
+            {
+                throw new UnrecognizedStartingPositionException(
+                    "A buffer overflow was detected in the starting position commands for this rover. Char is below minvalue or above maxvalue.");
+            }
         }
 
         /// <summary>
@@ -58,8 +111,10 @@ namespace Interview.Rover.Grid
         /// <param name="grid">A <see cref="Frame" /> object containing the dimensions along which a move can be executed.</param>
         public void Move(Movement instruction, Frame grid)
         {
-            if (instruction == Movement.Forward)
+            if ((instruction == Movement.Forward) && (Facing.Read == CurrentAxis.Forepoint))
                 CurrentAxis.Forward();
+            else if ((instruction == Movement.Forward) && (Facing.Read == CurrentAxis.Endpoint))
+                CurrentAxis.Backward();
             else if (instruction == Movement.Left)
                 Turn(grid, false);
             else if (instruction == Movement.Right)
@@ -83,14 +138,14 @@ namespace Interview.Rover.Grid
         /// </param>
         private void Turn(Frame grid, bool clockwise)
         {
-            if (CurrentAxis == grid.X)
+            if (CurrentAxis == grid.Y)
             {
-                CurrentAxis = grid.Y;
+                CurrentAxis = grid.X;
                 Facing.Turn(clockwise);
             }
             else
             {
-                CurrentAxis = grid.X;
+                CurrentAxis = grid.Y;
                 Facing.Turn(clockwise);
             }
         }
