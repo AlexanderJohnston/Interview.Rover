@@ -17,4 +17,12 @@ namespace Interview.Rover.Logic
         South = 'S',
         West = 'W'
     }
+
+    public static class DefaultCompass
+    {
+        public static Compass[] Get()
+        {
+            return new Compass[] {Compass.North, Compass.East, Compass.South, Compass.West};
+        }
+    }
 }
