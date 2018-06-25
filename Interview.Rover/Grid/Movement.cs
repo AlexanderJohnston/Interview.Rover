@@ -12,8 +12,8 @@ namespace Interview.Rover.Grid
 {
     internal enum Movement
     {
-        Left,
-        Right,
-        Forward
+        Left = 'L',
+        Right = 'R',
+        Forward = 'F'
     }
 }

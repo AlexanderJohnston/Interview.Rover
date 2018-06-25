@@ -26,15 +26,24 @@ namespace Interview.Rover.Grid
         public Orientation()
         {
             // Create a default compass facing North.
+            int position = 0;
             foreach (Compass direction in Enum.GetValues(typeof(Compass)))
-                CircularCompass.Append(direction);
+            {
+                CircularCompass[position] = direction;
+                position++;
+            }
         }
 
         public Orientation(Compass initialFacing)
         {
             // Create a default compass facing North.
-            foreach (Compass direction in Enum.GetValues(typeof(Compass)))
-                CircularCompass.Append(direction);
+            int position = 0;
+            var directions = DefaultCompass.Get();
+            foreach (Compass direction in directions)
+            {
+                CircularCompass[position] = direction;
+                position++;
+            }
 
             // Move the current position to the start of the circular queue to set the starting direction.
             if (initialFacing == Compass.East)
@@ -65,7 +74,7 @@ namespace Interview.Rover.Grid
         /// <summary>
         ///     Retrieve the current direction of this <see cref="Orientation" /> as a <see cref="Compass" /> value.
         /// </summary>
-        public Compass Read => Facing;
+        public Compass Read => CircularCompass.Read();
 
         /// <summary>
         ///     Turns the compass using a bi-directional circular buffer.

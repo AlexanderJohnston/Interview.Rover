@@ -33,18 +33,18 @@ namespace Interview.Rover.Grid
         /// <summary>
         ///     Contains the theoretical starting point of this dimension on a grid.
         /// </summary>
-        private Compass Forepoint { get; }
+        public Compass Forepoint { get; }
 
         /// <summary>
         ///     Contains the theoretical ending point of this dimension on a grid.
         /// </summary>
-        private Compass Endpoint { get; }
+        public Compass Endpoint { get; }
 
         /// <summary>
-        ///     Considered to be a deeper level position than the <see cref="Position" /> object. It has a loose dependency on this
-        ///     being initialized to some value.
+        ///     Considered to be a deeper level position than the <see cref="Grid.Position" /> object. It has a loose dependency on this
+        ///     being initialized to some value. You can also change this value at will and it should be carried uwpard.
         /// </summary>
-        public int Position { get; private set; }
+        public int Position { get; set; }
 
         public void Forward() => Position++;
 
