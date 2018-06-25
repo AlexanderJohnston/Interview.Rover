@@ -42,11 +42,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\UnrecognizedMovementInstructionException.cs" />
+    <Compile Include="Grid\Dimension.cs" />
+    <Compile Include="Grid\Frame.cs" />
+    <Compile Include="Grid\Movement.cs" />
+    <Compile Include="Grid\Orientation.cs" />
+    <Compile Include="Grid\Position.cs" />
+    <Compile Include="Logic\CircularBuffer.cs" />
+    <Compile Include="Logic\Compass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vehicle\MovementDecoder.cs" />
+    <Compile Include="Vehicle\LandRover.cs" />
+    <Compile Include="Vehicle\Control.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
