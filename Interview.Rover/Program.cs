@@ -35,7 +35,7 @@ namespace Interview.Rover
         private static LandRover InitializeRover(string startingPosition)
         {
             LandRover rover = new LandRover();
-
+            return rover;
         }
 
     }

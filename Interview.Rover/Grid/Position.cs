@@ -18,11 +18,12 @@ namespace Interview.Rover.Grid
         ///     Construct this <see cref="Position" /> based on a specified <see cref="Frame" /> grid.
         /// </summary>
         /// <param name="grid">Position will initialize at the south-west (0,0) location on this <see cref="Frame" />.</param>
+        /// <param name="facing">A <see cref="Compass"/> object to specify where the rover is initially facing.</param>
         public Position(Frame grid, Compass facing)
         {
             X = grid.X.Position;
             Y = grid.Y.Position;
-
+            //todo
         }
 
         /// <summary>

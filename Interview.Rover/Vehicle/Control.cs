@@ -9,6 +9,7 @@
 #endregion
 
 using Interview.Rover.Grid;
+using Interview.Rover.Logic;
 
 namespace Interview.Rover.Vehicle
 {
@@ -18,7 +19,8 @@ namespace Interview.Rover.Vehicle
         ///     Constructs a two-dimensional control module with a <see cref="Frame" /> representing the grid and a
         ///     <see cref="Location" /> tracking its position.
         /// </summary>
-        public Control() => Location = new Position(Grid);
+        public Control() => Location = new Position(Grid, Compass.North);
+        //todo
 
         private Frame Grid { get; } = new Frame();
 
