@@ -57,8 +57,7 @@ namespace Interview.Rover.Grid
                 }
                 else
                 {
-                    if (parsedX)
-                        throw new UnrecognizedStartingPositionException();
+                    throw new UnrecognizedStartingPositionException();
                 }
             }
             catch (ArgumentNullException nullEx)
