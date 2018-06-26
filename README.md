@@ -22,4 +22,6 @@ The most important factor in the design is that Rover instructions are run in se
 
 The second aspect of the design is that I didn't know what the system expected if the Rover was to move outside of its specified grid size. My model dynamically builds a new logical grid for each Rover with limits at the minimum and maximum values for an int which should safely roll over and not throw. This means that the Rover can drive into negative values without crashing. An important benefit of my grid model is that it can be easily extended into three dimensions if NASA ever invents a flying drone Rover.
 
-Lastly, I chose to use a simple logging system of piping out the Console to a plaintext file. I would have used something fancier like Serilog, but it seemed like overkill and I know you don't want to deal with third party libraries.
+Lastly, I chose to use a simple logging system of piping out the Console to a plaintext file. I would have used something fancier like Serilog, but it seemed like overkill and I know you don't want to deal with third party libraries. My console logger should pass exceptions down to your terminal or output file, so that you can easily identify where in my code there was an error. Let's hope there aren't any. :)
+
+Unit tests were skipped because I went a little overboard with my model and ran out of time. Hopefully you will find that the quality of documentation makes up for that.
