@@ -8,7 +8,7 @@ You can run this program as `Debug`, `Release`, `Any CPU`, `x64`, and presumably
 3. Open Powershell or Cmd and call the program with desired arguments. [Tip: `CTRL+SHIFT+Mouse2` and click "Open Powershell window here"]
 
 Arguments:
-* No arguments will output help and usage guidelines.
+* If you pass no arguments, it will output help and usage guidelines.
 * If the first argument contains `help` or `man` then it will display help. [Accepts `-help :help /help` etc...]
 * If the first argument is a path to an existing plaintext file, then the program will attempt to load it and run. Output will be set to `${AppDomain.BaseDirectory}/output.txt`
 * If the second argument is a valid path to a non-existing file then it will be created and set as the output.
