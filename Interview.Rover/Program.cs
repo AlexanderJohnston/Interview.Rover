@@ -19,23 +19,29 @@ namespace Interview.Rover
     {
         private static void Main(string[] args)
         {
-            var cmdArgs = new CommandLineArguments();
-            if (args[0].ToLower().Contains("help") || args[0].ToLower().Contains("man"))
+            if (args.Length == 0)
             {
                 ShowHelp();
                 return;
             }
-            else
-                cmdArgs.ParseInstructions(args[0]);
 
-            string outputFileName = $"{AppDomain.CurrentDomain.BaseDirectory}";
+            var cmdArgs = new CommandLineArguments();
+            if (args[0].ToLower().Contains("help") || (args[0].ToLower().Contains("man") && !File.Exists(args[0])))
+            {
+                ShowHelp();
+                return;
+            }
+
+            cmdArgs.ParseInstructions(args[0]);
+
+            var outputFileName = $"{AppDomain.CurrentDomain.BaseDirectory}";
             if (args[1].Length > 0)
                 outputFileName = args[1];
             else
                 outputFileName += "output.txt";
 
             //  Iterates over all current rovers imported from file-based command arguments.
-            for (int currentRover = 0; currentRover < cmdArgs.StartingPositions.Count; currentRover++)
+            for (var currentRover = 0; currentRover < cmdArgs.StartingPositions.Count; currentRover++)
             {
                 var rover = InitializeRoverAtPosition(cmdArgs.StartingPositions.ElementAt(currentRover));
                 ExecuteAndLogToFile(rover, cmdArgs.MovementInstructions.ElementAt(currentRover), outputFileName);
