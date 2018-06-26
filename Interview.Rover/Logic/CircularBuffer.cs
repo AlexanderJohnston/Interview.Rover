@@ -59,7 +59,7 @@ namespace Interview.Rover.Logic
         /// </summary>
         public void Backward()
         {
-            // Go around th left edge and arrive at the right side of buffer.
+            // Go around the left edge and arrive at the right side of buffer.
             if (Pointer == 0)
                 Pointer = Objects.Count - 1;
             else
