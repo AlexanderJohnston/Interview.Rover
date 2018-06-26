@@ -87,7 +87,7 @@ HOW TO USE:
 The first argument should contain the fully qualified path to your input instructions as a plaintext file.
 The second argument specifies an output file, otherwise the program will output to the AppDomain's base directory.
 
-EX: `.\Interview.Rover.exe C:\Working\RoverInstructions.txt C:\Working\Output.txt`
+EX: .\Interview.Rover.exe C:\Working\RoverInstructions.txt C:\Working\Output.txt
 
 INSTRUCTIONS FORMAT:
 ---
