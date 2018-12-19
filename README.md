@@ -31,3 +31,7 @@ Unit tests were skipped because I went a little overboard with my model and ran 
     0 0
     2 1 N
     LLLLLRLRLRLLRLRRRRRRMRMRMRRMRMMMM
+    0 0 N
+    MMMMMMMMMMMMLL
+    0 0 N
+    LRLRLRLRLRLRM
