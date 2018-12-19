@@ -28,10 +28,15 @@ Unit tests were skipped because I went a little overboard with my model and ran 
 
 ## Sample Input
 
+Three rovers starting on a grid with 0 Maximum X and 0 Maximum Y coordinates.
+The first rover starts at 2,1 facing North.
+The second rover starts at 0,0 facing North.
+The third rover starts at 0,0 facing South.
+
     0 0
     2 1 N
     LLLLLRLRLRLLRLRRRRRRMRMRMRRMRMMMM
     0 0 N
     MMMMMMMMMMMMLL
-    0 0 N
+    0 0 S
     LRLRLRLRLRLRM
