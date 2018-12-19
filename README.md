@@ -25,3 +25,9 @@ The second aspect of the design is that I didn't know what the system expected i
 Lastly, I chose to use a simple logging system of piping out the Console to a plaintext file. I would have used something fancier like Serilog, but it seemed like overkill and I know you don't want to deal with third party libraries. My console logger should pass exceptions down to your terminal or output file, so that you can easily identify where in my code there was an error. Let's hope there aren't any. :)
 
 Unit tests were skipped because I went a little overboard with my model and ran out of time. Hopefully you will find that the quality of documentation makes up for that.
+
+## Sample Input
+
+    0 0
+    2 1 N
+    LLLLLRLRLRLLRLRRRRRRMRMRMRRMRMMMM
