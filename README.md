@@ -1,5 +1,9 @@
 # Interview.Rover
 
+## Purpose
+
+This program was written in 2017 to join DealerOn and it serves as a high quality example of my ability to write code.
+
 ## Usage
 
 You can run this program as `Debug`, `Release`, `Any CPU`, `x64`, and presumably `x86`.
