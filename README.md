@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This program was written in 2017 to join DealerOn and it serves as a high quality example of my ability to write code.
+This program was written in 2017 to join DealerOn as part of their interview process and it serves as a high quality example of my ability to write code. I was so proud of it that I have it pinned on my GitHub profile for interviewers.
 
 ## Usage
 
